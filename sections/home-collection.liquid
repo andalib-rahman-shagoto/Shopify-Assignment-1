@@ -1,0 +1,51 @@
+{% assign home_colls = section.settings.home_collection %}
+{% assign lim_num = section.settings.limit_number %}
+<section class="shop_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>{{ home_colls.title }} Collections</h2>
+    </div>
+    <div class="row">
+      {% for product in home_colls.products limit: lim_num %}
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="{{ product.url }}">
+              <div class="img-box">
+                <img src="{{ product.featured_image | image_url }}" alt="Some image" width="100%">
+              </div>
+              <div class="detail-box">
+                <h6>{{ product.title }}</h6>
+                <h6>
+                  <span>{{ product.price | money }}</span>
+                </h6>
+              </div>
+              <div class="new"><span>New</span></div>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="btn-box"><a href="{{ home_colls.url }}">View All Products</a></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Latest Products",
+  "settings": [
+    {
+      "id": "home_collection",
+      "type": "collection",
+      "label": "Home Collection"
+    },
+    {
+      "id": "limit_number",
+      "type": "range",
+      "label": "Limit Number",
+      "min": 2,
+      "max": 8,
+      "default": 4
+    }
+  ]
+}
+{% endschema %}

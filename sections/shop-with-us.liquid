@@ -1,0 +1,51 @@
+<section class="why_section layout_padding">
+  <div class="container">
+    <div class="heading_container heading_center">
+      <h2>Why Shop With Us</h2>
+    </div>
+    <div class="row">
+      {% for block in section.blocks %}
+        <div class="col-md-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="{{ block.settings.icon | image_url }}" alt="Some Image" width="100%">
+            </div>
+            <div class="detail-box">
+              <h5>{{ block.settings.head_text }}</h5>
+              <p>{{ block.settings.body_text }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shop With Us",
+  "blocks": [
+    {
+      "name": "Block",
+      "type": "text",
+      "settings": [
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Icon"
+        },
+        {
+          "id": "head_text",
+          "type": "text",
+          "label": "Head Text"
+        },
+         {
+          "id": "body_text",
+          "type": "richtext",
+          "label": "Body Text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

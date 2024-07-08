@@ -1,0 +1,4 @@
+{% for product in collection.products %}
+  <h1>{{ product.title }}</h1>
+  <p>{{ product.price | money }}</p>
+{% endfor %}

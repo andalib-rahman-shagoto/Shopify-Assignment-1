@@ -1,0 +1,69 @@
+<section class="saving_section">
+  <div class="box">
+    <div class="container-fluid">
+      <div class="row">
+        {% for block in section.blocks %}
+          <div class="col-lg-6">
+            {% if block.type == 'pic' %}
+              <div class="img-box">
+                <img src="{{ block.settings.picture | image_url }}" alt="Some image" width="100%">
+              </div>
+            {% else %}
+              <div class="detail-box">
+                <div class="heading_container">
+                  <h2>
+                    {{ block.settings.head_text }}
+                  </h2>
+                </div>
+                <p>
+                  {{ block.settings.body_text }}
+                </p>
+                <div class="btn-box">
+                  <a href="https://www.free-css.com/free-css-templates" class="btn1">Buy Now</a>
+                  <a href="https://www.free-css.com/free-css-templates" class="btn2">See More</a>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Savings",
+  "blocks": [
+    {
+      "name": "Details",
+      "type": "text",
+      "settings": [
+        {
+          "id": "head_text",
+          "type": "text",
+          "label": "Head Text"
+        },
+        {
+          "id": "body_text",
+          "type": "richtext",
+          "label": "Body Text"
+        }
+      ],
+      "limit": 1
+    },
+    {
+      "name" : "Picture",
+      "type": "pic",
+      "settings": [
+        {
+          "id": "picture",
+          "type": "image_picker",
+          "label": "Add Picture"
+        }
+      ],
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}
